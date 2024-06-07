@@ -86,11 +86,5 @@
         }
       }
     }
-  ],
-  "outputs": {
-    "storageEndpoint": {
-      "type": "object",
-      "value": "[reference('linkedTemplate').outputs.storageEndpoint.value]"
-    }
-  }
+  ]
 }
