@@ -28,6 +28,17 @@
       }
     }
   },
+    "sku": {  
+      "type": "string",  
+      "defaultValue": "S0",  
+      "allowedValues": [
+        "S0"  
+      ],  
+      "metadata": {  
+        "description": "Tipo de SKU para el Form Recognizer"  
+      }  
+    }  
+  }, 
   "variables": {
     "storageAccountName": "[concat(parameters('projectName'), uniqueString(resourceGroup().id))]",
     "webAppName": "[concat(parameters('projectName'), 'WebApp')]",
@@ -88,6 +99,25 @@
           "linuxFxVersion": "[parameters('linuxFxVersion')]"
         }
       }
+    },  
+    {  
+      "type": "Microsoft.CognitiveServices/accounts",  
+      "apiVersion": "2021-04-30",  
+      "name": "[parameters('formRecognizerAccountName')]",  
+      "location": "[parameters('location')]",  
+      "kind": "FormRecognizer",  
+      "sku": {  
+        "name": "[parameters('sku')]"  
+      },  
+      "properties": {  
+        "apiProperties": {  
+          "qnaRuntimeEndpoint": ""  
+        },  
+        "customSubDomainName": "[parameters('formRecognizerAccountName')]"  
+      },  
+      "tags": {  
+        "project": "FormRecognizerDeployment"  
+      }  
     }
   ]
 }
