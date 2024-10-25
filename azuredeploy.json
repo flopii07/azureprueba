@@ -28,17 +28,17 @@
       }
     }
   },
-    "sku": {  
-      "type": "string",  
-      "defaultValue": "S0",  
+    "sku": {
+      "type": "string",
+      "defaultValue": "S0",
       "allowedValues": [
-        "S0"  
-      ],  
-      "metadata": {  
-        "description": "Tipo de SKU para el Form Recognizer"  
-      }  
-    }  
-  }, 
+        "S0"
+      ],
+      "metadata": {
+        "description": "Tipo de SKU para el Form Recognizer"
+      }
+    }
+  },
   "variables": {
     "storageAccountName": "[concat(parameters('projectName'), uniqueString(resourceGroup().id))]",
     "webAppName": "[concat(parameters('projectName'), 'WebApp')]",
@@ -99,25 +99,28 @@
           "linuxFxVersion": "[parameters('linuxFxVersion')]"
         }
       }
-    },  
-    {  
-      "type": "Microsoft.CognitiveServices/accounts",  
-      "apiVersion": "2021-04-30",  
-      "name": "[parameters('formRecognizerAccountName')]",  
-      "location": "[parameters('location')]",  
-      "kind": "FormRecognizer",  
-      "sku": {  
-        "name": "[parameters('sku')]"  
-      },  
-      "properties": {  
-        "apiProperties": {  
-          "qnaRuntimeEndpoint": ""  
-        },  
-        "customSubDomainName": "[parameters('formRecognizerAccountName')]"  
-      },  
-      "tags": {  
-        "project": "FormRecognizerDeployment"  
-      }  
+    },
+    {
+      "name": "formRecognizerDeployment",
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2022-09-01",
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "relativePath": "formRecognizer.json"
+        },
+        "parameters": {
+          "formRecognizerAccountName": {
+            "value": "[parameters('formRecognizerAccountName')]"
+          },
+          "location": {
+            "value": "[parameters('location')]"
+          },
+          "sku": {
+            "value": "[parameters('sku')]"
+          }
+        }
+      }
     }
   ]
 }
