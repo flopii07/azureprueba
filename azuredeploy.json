@@ -26,6 +26,17 @@
             "metadata": {
                 "description": "The Runtime stack of current web app"
             }
+        },
+        "sku": {
+            "type": "string",
+            "defaultValue": "F0",
+            "allowedValues": [
+                "F0",
+                "S0"
+            ],
+            "metadata": {
+                "description": "Tipo de SKU para el Form Recognizer"
+            }
         }
     },
     "variables": {
@@ -106,11 +117,7 @@
                         "value": "[parameters('location')]"
                     },
                     "sku": {
-                        "name": "B1",
-                        "tier": "Basic",
-                        "size": "B1",
-                        "family": "B",
-                        "capacity": 1
+                        "value": "[parameters('sku')]"
                     }
                 }
             }
