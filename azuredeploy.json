@@ -28,16 +28,6 @@
             }
         }
     },
-    "sku": {
-        "type": "string",
-        "defaultValue": "S0",
-        "allowedValues": [
-            "S0"
-        ],
-        "metadata": {
-            "description": "Tipo de SKU para el Form Recognizer"
-        }
-    },
     "variables": {
         "storageAccountName": "[concat(parameters('projectName'), uniqueString(resourceGroup().id))]",
         "webAppName": "[concat(parameters('projectName'), 'WebApp')]",
@@ -116,7 +106,11 @@
                         "value": "[parameters('location')]"
                     },
                     "sku": {
-                        "value": "[parameters('sku')]"
+                        "name": "B1",
+                        "tier": "Basic",
+                        "size": "B1",
+                        "family": "B",
+                        "capacity": 1
                     }
                 }
             }
