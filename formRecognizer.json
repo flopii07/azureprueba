@@ -1,6 +1,28 @@
 {
     "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
+    "parameters": {
+        "formRecognizerAccountName": {
+            "type": "string",
+            "metadata": {
+                "description": "Nombre del Form Recognizer"
+            }
+        },
+        "location": {
+            "type": "string",
+            "defaultValue": "eastus",
+            "metadata": {
+                "description": "Ubicación del recurso"
+            }
+        },
+        "sku": {
+            "type": "string",
+            "defaultValue": "S0",
+            "metadata": {
+                "description": "Tipo de SKU para el Form Recognizer"
+            }
+        }
+    },
     "resources": [
         {
             "type": "Microsoft.CognitiveServices/accounts",
@@ -21,22 +43,5 @@
                 "project": "FormRecognizerDeployment"
             }
         }
-    ],
-    "parameters": {
-        "formRecognizerAccountName": {
-            "type": "string"
-        }
-    },
-    "location": {
-        "type": "string",
-        "defaultValue": "eastus"
-    },
-    "sku": {
-        "type": "string",
-        "defaultValue": "F0",
-        "allowedValues": [
-            "F0",
-            "S0"
-        ]
-    }
+    ]
 }
