@@ -17,6 +17,9 @@
         "description": "Specify a location for the resources."
       }
     },
+    "formRecognizerAccountName": {
+      "type": "string"
+    },   
     "linuxFxVersion": {
       "type": "string",
       "defaultValue": "php|7.0",
