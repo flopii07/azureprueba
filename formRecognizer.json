@@ -1,45 +1,42 @@
-{  
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",  
-  "contentVersion": "1.0.0.0",  
-  "resources": [  
-    {  
-      "type": "Microsoft.CognitiveServices/accounts",  
-      "apiVersion": "2021-04-30",  
-      "name": "[parameters('formRecognizerAccountName')]",  
-      "location": "[parameters('location')]",  
-      "kind": "FormRecognizer",  
-      "sku": {  
-        "name": "[parameters('sku')]"  
-      },  
-      "properties": {  
-        "apiProperties": {  
-          "qnaRuntimeEndpoint": ""  
-        },  
-        "customSubDomainName": "[parameters('formRecognizerAccountName')]"  
-      },  
-      "tags": {  
-        "project": "FormRecognizerDeployment"  
-      }  
-    }  
-  ],  
-  "parameters": {  
-    "formRecognizerAccountName": {  
-      "type": "string"
-      } 
-    },  
-    "location": {  
-      "type": "string",  
-      "defaultValue": "eastus"
-      }  
-    },  
-    "sku": {  
-      "type": "string",  
-      "defaultValue": "F0",  
-      "allowedValues": [  
-        "F0",  
-        "S0"  
-      ]
-      }
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "resources": [
+        {
+            "type": "Microsoft.CognitiveServices/accounts",
+            "apiVersion": "2021-04-30",
+            "name": "[parameters('formRecognizerAccountName')]",
+            "location": "[parameters('location')]",
+            "kind": "FormRecognizer",
+            "sku": {
+                "name": "[parameters('sku')]"
+            },
+            "properties": {
+                "apiProperties": {
+                    "qnaRuntimeEndpoint": ""
+                },
+                "customSubDomainName": "[parameters('formRecognizerAccountName')]"
+            },
+            "tags": {
+                "project": "FormRecognizerDeployment"
+            }
+        }
+    ],
+    "parameters": {
+        "formRecognizerAccountName": {
+            "type": "string"
+        }
+    },
+    "location": {
+        "type": "string",
+        "defaultValue": "eastus"
+    },
+    "sku": {
+        "type": "string",
+        "defaultValue": "F0",
+        "allowedValues": [
+            "F0",
+            "S0"
+        ]
     }
-  }
 }
